@@ -9,8 +9,8 @@ RUN	zypper -n dup \
 
 WORKDIR /srv/www/htdocs
 
-EXPOSE 80 443
+# EXPOSE 80 443
 
 STOPSIGNAL SIGTERM
 
-CMD ["bash" ]
+CMD ["/bin/bash" ]
