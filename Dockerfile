@@ -6,6 +6,7 @@ WORKDIR /tmp
 RUN     zypper -n dup \
         && zypper install -y --no-recommends curl ca-certificates gpg2 openssl \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
+	ncurses-devel libmaxminddb-devel libmaxminddb gettext \
         && zypper clean -a && wget https://nginx.org/download/nginx-1.17.4.tar.gz && tar -xzvf nginx-1.17.4.tar.gz \
 	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zvxf OpenSSL_1_1_1d.tar.gz
 
@@ -23,6 +24,8 @@ RUN     cd nginx-1.17.4 \
 	&& make && make install
 
 # build goaccess
+RUN 	cd /tmp && wget https://tar.goaccess.io/goaccess-1.3.tar.gz && tar -xzvf goaccess-1.3.tar.gz && cd goaccess-1.3/ \
+	&& ./configure --enable-utf8 --enable-geoip=mmdb --with-openssl && make && make install
 
 STOPSIGNAL SIGTERM
 
