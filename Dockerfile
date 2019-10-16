@@ -17,7 +17,7 @@ RUN     cd nginx-1.17.4 \
 	--with-http_ssl_module --with-http_v2_module --with-pcre --with-ipv6 --with-http_xslt_module \
 	--with-http_image_filter_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-stream \
 	--with-stream_ssl_module --with-mail --with-mail_ssl_module --with-http_gzip_static_module --with-http_gunzip_module \
-	--with-http_stub_status_module --with-openssl \
+	--with-http_stub_status_module \
 	&& make && make install
 
 STOPSIGNAL SIGTERM
