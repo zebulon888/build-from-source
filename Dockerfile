@@ -4,7 +4,7 @@ WORKDIR /tmp
 
 RUN     zypper -n dup \
         && zypper install -y --no-recommends curl ca-certificates gpg2 openssl \
-        patterns-devel-base-devel_basis pcre-devel libopenssl-devel pcre zlib wget nano iputils \
+        patterns-devel-base-devel_basis pcre-devel libopenssl-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
         && zypper clean -a && wget https://nginx.org/download/nginx-1.17.4.tar.gz \
         && tar -xzvf nginx-1.17.4.tar.gz
 
