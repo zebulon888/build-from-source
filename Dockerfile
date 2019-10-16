@@ -6,7 +6,7 @@ WORKDIR /tmp
 RUN     zypper -n dup \
         && zypper install -y --no-recommends curl ca-certificates gpg2 openssl \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
-	ncurses-devel libmaxminddb-devel libmaxminddb gettext \
+	ncurses-devel libmaxminddb-devel gettext \
         && zypper clean -a && wget https://nginx.org/download/nginx-1.17.4.tar.gz && tar -xzvf nginx-1.17.4.tar.gz \
 	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zvxf OpenSSL_1_1_1d.tar.gz
 
