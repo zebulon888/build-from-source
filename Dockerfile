@@ -25,9 +25,7 @@ RUN     cd nginx-1.17.4 \
 
 # build goaccess
 RUN 	cd /tmp && wget https://tar.goaccess.io/goaccess-1.3.tar.gz && tar -xzvf goaccess-1.3.tar.gz && cd goaccess-1.3/ \
-	&& autoreconf -fiv \
-	&& CC="clang" CFLAGS="-O3 -static" LIBS="$(pkg-config --libs openssl)" ./configure --prefix="" --enable-utf8 \
-	--with-openssl --enable-geoip=mmdb \
+	&& ./configure --prefix="" --enable-utf8 --with-openssl --enable-geoip=mmdb \
 	&& make && make DESTDIR=/usr/bin install
 
 STOPSIGNAL SIGTERM
