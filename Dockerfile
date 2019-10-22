@@ -8,8 +8,7 @@ RUN     zypper -n dup \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-1.17.4.tar.gz && tar -xzvf nginx-1.17.4.tar.gz \
-	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zvxf OpenSSL_1_1_1d.tar.gz \
-	&& wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz && tar zvxf GeoLite2-Country*.tar.gz
+	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zvxf OpenSSL_1_1_1d.tar.gz 
 
 # build nginx
 RUN     cd nginx-1.17.4 \
