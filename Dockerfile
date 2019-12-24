@@ -7,11 +7,11 @@ RUN     zypper -n dup \
         && zypper install -y --no-recommends curl ca-certificates gpg2 openssl libopenssl-devel \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
-        && zypper clean -a && wget https://nginx.org/download/nginx-1.17.6.tar.gz && tar -xzvf nginx-1.17.6.tar.gz \
+        && zypper clean -a && wget https://nginx.org/download/nginx-1.17.7.tar.gz && tar -xzvf nginx-1.17.7.tar.gz \
 	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zvxf OpenSSL_1_1_1d.tar.gz 
 
 # build nginx
-RUN     cd nginx-1.17.6 \
+RUN     cd nginx-1.17.7 \
         && ./configure --prefix=/srv/www/nginx --sbin-path=/usr/bin/nginx --modules-path=/etc/nginx/modules \
 	--conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log \
 	--http-client-body-temp-path=/srv/www/nginx/tmp/ --http-proxy-temp-path=/srv/www/nginx/proxy/ \
