@@ -8,7 +8,7 @@ RUN     zypper -n dup \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-1.17.7.tar.gz && tar -xzvf nginx-1.17.7.tar.gz \
-	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1d.tar.gz && tar zvxf OpenSSL_1_1_1d.tar.gz 
+	&& wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1-stable.tar.gz && tar zvxf OpenSSL_1_1_1-stable.tar.gz 
 
 # build nginx
 RUN     cd nginx-1.17.7 \
@@ -20,7 +20,7 @@ RUN     cd nginx-1.17.7 \
 	--with-http_ssl_module --with-http_v2_module --with-pcre --with-ipv6 --with-http_xslt_module \
 	--with-http_image_filter_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-stream \
 	--with-stream_ssl_module --with-mail --with-mail_ssl_module --with-http_gzip_static_module --with-http_gunzip_module \
-	--with-http_stub_status_module --with-openssl=/tmp/openssl-OpenSSL_1_1_1d \
+	--with-http_stub_status_module --with-openssl=/tmp/openssl-OpenSSL_1_1_1-stable \
 	&& make && make install
 
 # build goaccess
