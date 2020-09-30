@@ -14,7 +14,7 @@ RUN     zypper -n dup \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar -xzvf nginx-${NGINX_VERSION}.tar.gz \
 	&& wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz \
-	&& wget https://hg.nginx.org/njs/archive/tip.tar.gz && tar zvxf ${NJS_VERSION}.tar.gz
+	&& wget https://hg.nginx.org/njs/archive/tip.tar.gz && tar zvxf tip.tar.gz
 
 # build nginx
 RUN     cd nginx-${NGINX_VERSION} \
