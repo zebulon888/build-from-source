@@ -1,7 +1,7 @@
 FROM    opensuse/tumbleweed:latest
 
 ENV NGINX_VERSION=1.19.3
-ENV NJS_VERSION=njs-default
+ENV NJS_VERSION=default
 ENV OPENSSL_VERSION=OpenSSL_1_1_1-stable
 ENV GOACCESS_VERSION=1.4
 
