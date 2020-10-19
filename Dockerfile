@@ -1,7 +1,6 @@
 FROM    opensuse/tumbleweed:latest
 
 ENV NGINX_VERSION=1.19.3
-ENV NJS_VERSION=default
 ENV OPENSSL_VERSION=OpenSSL_1_1_1-stable
 ENV GOACCESS_VERSION=1.4
 
@@ -13,8 +12,8 @@ RUN     zypper -n dup \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar -xzvf nginx-${NGINX_VERSION}.tar.gz \
-	&& wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz \
-	&& wget https://hg.nginx.org/njs/archive/default.tar.gz && tar zvxf ${NJS_VERSION}.tar.gz
+	&& wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz
+	
 
 # build nginx
 RUN     cd nginx-${NGINX_VERSION} \
@@ -27,7 +26,6 @@ RUN     cd nginx-${NGINX_VERSION} \
 	--with-http_image_filter_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-stream \
 	--with-stream_ssl_module --with-mail --with-mail_ssl_module --with-http_gzip_static_module --with-http_gunzip_module \
 	--with-http_stub_status_module --with-openssl=/tmp/openssl-${OPENSSL_VERSION} \
-	--add-module=/tmp/njs-default/nginx \
 	&& make && make install
 
 # build goaccess
