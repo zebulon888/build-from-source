@@ -7,8 +7,7 @@ ENV GOACCESS_VERSION=1.4
 WORKDIR /tmp
 
 # get the build packages
-RUN     zypper -n dup \
-        && zypper install -y --no-recommends curl ca-certificates gpg2 openssl libopenssl-devel \
+RUN     zypper install -y --no-recommends curl ca-certificates gpg2 openssl libopenssl-devel \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar -xzvf nginx-${NGINX_VERSION}.tar.gz \
