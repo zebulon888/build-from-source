@@ -17,7 +17,7 @@ RUN     zypper -n dup \
 
 # build nginx
 RUN     cd nginx-${NGINX_VERSION} \
-        && ./configure --prefix=/srv/www/nginx --sbin-path=/usr/bin/nginx --modules-path=/etc/nginx/modules \
+        && ./configure --prefix=/srv/www/nginx --sbin-path=/usr/sbin/nginx --modules-path=/etc/nginx/modules \
 	--conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log \
 	--http-client-body-temp-path=/srv/www/nginx/tmp/ --http-proxy-temp-path=/srv/www/nginx/proxy/ \
 	--http-fastcgi-temp-path=/srv/www/nginx/fastcgi/ --http-uwsgi-temp-path=/srv/www/nginx/uwsgi/ \
