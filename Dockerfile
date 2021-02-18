@@ -11,7 +11,7 @@ RUN     zypper install -y --no-recommends curl ca-certificates gpg2 openssl libo
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
 	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar -xzvf nginx-${NGINX_VERSION}.tar.gz \
-	&& wget https://github.com/openssl/openssl/tree/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz
+	&& wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz
 	
 
 # build nginx
