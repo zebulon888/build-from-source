@@ -13,9 +13,9 @@ RUN zypper install -y curl \
     && zypper addrepo --check --refresh --name "Factory" https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
     
 # get the build packages
-RUN     zypper install -y --no-recommends curl ca-certificates gpg2 openssl libopenssl-devel \
-        patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
-	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
+RUN     zypper install -y --no-recommends openssl \
+        patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre wget \
+	ncurses-devel libmaxminddb-devel libmaxminddb0 \
         && zypper clean -a && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar -xzvf nginx-${NGINX_VERSION}.tar.gz \
 	&& wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz
 	
