@@ -7,15 +7,15 @@ ENV GOACCESS_VERSION=1.4.6
 WORKDIR /tmp
 
 # Install Factory repo
-RUN zypper install -y curl \
-    && curl -fsSL https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key > /tmp/factory.key \
-    && rpm --import /tmp/factory.key \
-    && zypper addrepo --check --refresh --name "Factory" https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
+# RUN zypper install -y curl ca-certificates gpg2 openssl libopenssl-devel \
+#    && curl -fsSL https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key > /tmp/factory.key \
+#    && rpm --import /tmp/factory.key \
+#    && zypper addrepo --check --refresh --name "Factory" https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
     
 # get the build packages
-RUN     zypper install -y --no-recommends \
-        patterns-devel-base-devel_basis pcre-devel gd-devel libxml2-devel libxslt-devel wget \
-	ncurses-devel libmaxminddb-devel libmaxminddb0 \
+RUN     zypper install -y --no-recommends curl ca-certificates gpg2 openssl libopenssl-devel \
+        patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
+	ncurses ncurses-devel libmaxminddb-devel libmaxminddb0 gettext gettext-devel \
         && zypper clean -a && wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && tar -xzvf nginx-${NGINX_VERSION}.tar.gz \
 	&& wget https://github.com/openssl/openssl/archive/${OPENSSL_VERSION}.tar.gz && tar zvxf ${OPENSSL_VERSION}.tar.gz
 	
