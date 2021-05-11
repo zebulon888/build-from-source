@@ -6,6 +6,12 @@ ENV GOACCESS_VERSION=1.4.6
 
 WORKDIR /tmp
 
+# Install Factory repo
+RUN zypper install -y curl \
+    && curl -fsSL https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key > /tmp/factory.key \
+    && rpm --import /tmp/factory.key \
+    && zypper addrepo --check --refresh --name "Factory" https://download.opensuse.org/repositories/openSUSE:Factory/standard/openSUSE:Factory.repo
+    
 # get the build packages
 RUN     zypper install -y --no-recommends curl ca-certificates gpg2 openssl libopenssl-devel \
         patterns-devel-base-devel_basis pcre-devel libopenssl-devel gd-devel libxml2-devel libxslt-devel pcre zlib wget nano iputils \
